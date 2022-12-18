@@ -1,6 +1,6 @@
 # Technical Assignment
 
-The API must support the following use cases:
+This API support the following use cases:
 * Create a user with an email and a password.
 * Send an email to the user with a 4 digits code.
 * Activate this account with the 4 digits code received.
