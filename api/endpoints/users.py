@@ -51,7 +51,7 @@ def create_user(new_user: users.CreateUser):
     )
 
 
-@router.put("/{user_email}")
+@router.put("/{user_email}", response_model=users.ActivatedUser)
 def activate_user(user_email: EmailStr, inactive_user: users.InactiveUser):
     """Activate user
 
@@ -72,7 +72,7 @@ def activate_user(user_email: EmailStr, inactive_user: users.InactiveUser):
         raise user_exception.InvalideUserCodeError()
 
     # get difference
-    delta = datetime.now() - user['created_at']
+    delta = datetime.now() - user['_code_timestamp']
     diff_min = delta.total_seconds()/60
 
     if diff_min > 1:
@@ -82,4 +82,7 @@ def activate_user(user_email: EmailStr, inactive_user: users.InactiveUser):
 
     user_repository.update(email=user_email, data=user)
 
-    return JSONResponse(content={"message": "user was activated"})
+    return users.ActivatedUser(
+        first_name=user['first_name'],
+        last_name=user['last_name'],
+    )

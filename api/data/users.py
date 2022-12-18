@@ -19,11 +19,13 @@ class CreateUser(Validations):
 
         return value
 
+
 @dataclass
 class CreatedUser:
     first_name: str
     last_name: str
     email: EmailStr
+
 
 @dataclass
 class InactiveUser(Validations):
@@ -34,3 +36,10 @@ class InactiveUser(Validations):
             raise ValueError("invalid token")
 
         return value
+
+
+@dataclass
+class ActivatedUser:
+    first_name: str
+    last_name: str
+    active: bool = True

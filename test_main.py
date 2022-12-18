@@ -1,9 +1,8 @@
-from infrastructure.utils.hasher import Hasher
-from domain.user.user import User
 from fastapi.testclient import TestClient
 
+from domain.user.user import User
+from infrastructure.utils.hasher import Hasher
 from main import app
-
 
 client = TestClient(app)
 

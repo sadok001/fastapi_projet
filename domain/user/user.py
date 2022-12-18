@@ -1,3 +1,4 @@
+from datetime import datetime
 from random import randint
 
 from pydantic import EmailStr
@@ -39,3 +40,7 @@ class User:
 
     def set_code(self) -> None:
         self._code = randint(1000, 9999)
+        self._code_timestamp = datetime.now()
+
+    def get_code_timestamp(self):
+        return self._code_timestamp
