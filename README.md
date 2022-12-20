@@ -1,4 +1,4 @@
-# Technical Assignment
+# FastAPI REST API
 
 This API support the following use cases:
 * Create a user with an email and a password.
